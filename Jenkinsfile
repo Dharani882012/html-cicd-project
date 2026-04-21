@@ -2,16 +2,15 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Build Docker Image') {
+        stage('Build Image') {
             steps {
-                bat 'docker build -t python-app .'
+                bat 'docker build -t web-app .'
             }
         }
 
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 5000:5000 python-app'
+                bat 'docker run -d -p 8081:80 web-app'
             }
         }
     }
